@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Customer Segmentation</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-decor">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>AI-Powered Analytics</span>
+            </div>
+            <h1>Insurance Customer Segmentation</h1>
+            <p>Predict customer segment using Machine Learning and K-Means Clustering.</p>
+        </header>
+
+        <!-- Main Form Section -->
+        <section class="card form-card">
+            <div class="card-header">
+                <h2>Customer Profile Form</h2>
+                <button type="button" id="fillSampleBtn" class="btn btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                    Fill Sample Data
+                </button>
+            </div>
+
+            <form id="segmentationForm" novalidate>
+                <div class="form-grid">
+                    <!-- Numeric Inputs -->
+                    <div class="input-group">
+                        <label for="Age">Age</label>
+                        <input type="number" id="Age" name="Age" placeholder="Example: 35 (18–80)" min="18" max="80" required>
+                        <span class="error-msg">Please enter a valid age (18-80)</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Income_Level">Income Level ($)</label>
+                        <input type="number" id="Income_Level" name="Income_Level" placeholder="Example: 85000" min="0" required>
+                        <span class="error-msg">Please enter valid income level</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Coverage_Amount">Coverage Amount ($)</label>
+                        <input type="number" id="Coverage_Amount" name="Coverage_Amount" placeholder="Example: 500000" min="0" required>
+                        <span class="error-msg">Please enter valid coverage amount</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Premium_Amount">Premium Amount ($)</label>
+                        <input type="number" id="Premium_Amount" name="Premium_Amount" placeholder="Example: 15000" min="0" required>
+                        <span class="error-msg">Please enter valid premium amount</span>
+                    </div>
+
+                    <!-- Dropdowns -->
+                    <div class="input-group">
+                        <label for="Gender">Gender</label>
+                        <select id="Gender" name="Gender" required>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+                        <span class="error-msg">Please select gender</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Marital_Status">Marital Status</label>
+                        <select id="Marital_Status" name="Marital_Status" required>
+                            <option value="" disabled selected>Select Status</option>
+                            <option value="Married">Married</option>
+                            <option value="Single">Single</option>
+                            <option value="Separated">Separated</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                        <span class="error-msg">Please select marital status</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Education_Level">Education Level</label>
+                        <select id="Education_Level" name="Education_Level" required>
+                            <option value="" disabled selected>Select Education</option>
+                            <option value="High School Diploma">High School Diploma</option>
+                            <option value="Bachelor's Degree">Bachelor's Degree</option>
+                            <option value="Master's Degree">Master's Degree</option>
+                            <option value="Doctorate">Doctorate</option>
+                        </select>
+                        <span class="error-msg">Please select education level</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Occupation">Occupation</label>
+                        <select id="Occupation" name="Occupation" required>
+                            <option value="" disabled selected>Select Occupation</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Engineer">Engineer</option>
+                            <option value="Entrepreneur">Entrepreneur</option>
+                            <option value="Lawyer">Lawyer</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Nurse">Nurse</option>
+                            <option value="Salesperson">Salesperson</option>
+                            <option value="Teacher">Teacher</option>
+                        </select>
+                        <span class="error-msg">Please select occupation</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Geographic_Information">Geographic Information</label>
+                        <select id="Geographic_Information" name="Geographic_Information" required>
+                            <option value="" disabled selected>Select State</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="West Bengal">West Bengal</option>
+                        </select>
+                        <span class="error-msg">Please select state</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Behavioral_Data">Behavioral Data</label>
+                        <select id="Behavioral_Data" name="Behavioral_Data" required>
+                            <option value="" disabled selected>Select Policy Behavior</option>
+                            <option value="policy2">policy2</option>
+                            <option value="policy3">policy3</option>
+                            <option value="policy4">policy4</option>
+                            <option value="policy5">policy5</option>
+                        </select>
+                        <span class="error-msg">Please select behavioral data</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Interactions_with_Customer_Service">Customer Service Channel</label>
+                        <select id="Interactions_with_Customer_Service" name="Interactions_with_Customer_Service" required>
+                            <option value="" disabled selected>Select Interaction</option>
+                            <option value="Email">Email</option>
+                            <option value="Phone">Phone</option>
+                            <option value="Mobile App">Mobile App</option>
+                            <option value="In-Person">In-Person</option>
+                        </select>
+                        <span class="error-msg">Please select interaction method</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Insurance_Products_Owned">Insurance Products Owned</label>
+                        <select id="Insurance_Products_Owned" name="Insurance_Products_Owned" required>
+                            <option value="" disabled selected>Select Product</option>
+                            <option value="policy2">policy2</option>
+                            <option value="policy3">policy3</option>
+                            <option value="policy4">policy4</option>
+                            <option value="policy5">policy5</option>
+                        </select>
+                        <span class="error-msg">Please select owned product</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Policy_Type">Policy Type</label>
+                        <select id="Policy_Type" name="Policy_Type" required>
+                            <option value="" disabled selected>Select Policy Type</option>
+                            <option value="Individual">Individual</option>
+                            <option value="Family">Family</option>
+                            <option value="Group">Group</option>
+                        </select>
+                        <span class="error-msg">Please select policy type</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Customer_Preferences">Customer Preferences</label>
+                        <select id="Customer_Preferences" name="Customer_Preferences" required>
+                            <option value="" disabled selected>Select Preference</option>
+                            <option value="Phone">Phone</option>
+                            <option value="Mail">Mail</option>
+                            <option value="Text">Text</option>
+                            <option value="In-Person Meeting">In-Person Meeting</option>
+                        </select>
+                        <span class="error-msg">Please select preference</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Preferred_Communication_Channel">Preferred Communication</label>
+                        <select id="Preferred_Communication_Channel" name="Preferred_Communication_Channel" required>
+                            <option value="" disabled selected>Select Channel</option>
+                            <option value="Phone">Phone</option>
+                            <option value="Mail">Mail</option>
+                            <option value="Text">Text</option>
+                            <option value="In-Person Meeting">In-Person Meeting</option>
+                        </select>
+                        <span class="error-msg">Please select communication channel</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Preferred_Contact_Time">Preferred Contact Time</label>
+                        <select id="Preferred_Contact_Time" name="Preferred_Contact_Time" required>
+                            <option value="" disabled selected>Select Time</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Evening">Evening</option>
+                            <option value="Weekends">Weekends</option>
+                            <option value="Anytime">Anytime</option>
+                        </select>
+                        <span class="error-msg">Please select contact time</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Preferred_Language">Preferred Language</label>
+                        <select id="Preferred_Language" name="Preferred_Language" required>
+                            <option value="" disabled selected>Select Language</option>
+                            <option value="French">French</option>
+                            <option value="German">German</option>
+                            <option value="Mandarin">Mandarin</option>
+                            <option value="Spanish">Spanish</option>
+                        </select>
+                        <span class="error-msg">Please select language</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="predictBtn" class="btn btn-primary">
+                        <span class="btn-text">Predict Customer Segment</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Result Card Section -->
+        <section id="resultCard" class="card result-card hidden">
+            <div class="success-animation">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <h3>Prediction Result</h3>
+            <div class="result-badge-container">
+                <span class="badge" id="segmentBadge">Segment Name</span>
+            </div>
+            <div class="result-details">
+                <div class="result-item">
+                    <span class="result-label">Customer Segment</span>
+                    <span class="result-value" id="segmentValue">-</span>
+                </div>
+                <div class="result-divider"></div>
+                <div class="result-item">
+                    <span class="result-label">Cluster ID</span>
+                    <span class="result-value" id="clusterValue">-</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Error Card Section -->
+        <section id="errorCard" class="card error-card hidden">
+            <div class="error-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="error-content">
+                <h4>Connection Error</h4>
+                <p id="errorMessage">Unable to connect to the prediction server. Please make sure the FastAPI backend is running on http://127.0.0.1:8000.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
