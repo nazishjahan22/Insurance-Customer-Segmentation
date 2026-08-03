@@ -5,7 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // API Configuration
-    const API_URL = 'http://127.0.0.1:8000/predict';
+    const API_URL = 'https://insurance-customer-segmentation.onrender.com/predict'
 
     // Sample Dataset for quick auto-fill functionality
     const sampleData = {
